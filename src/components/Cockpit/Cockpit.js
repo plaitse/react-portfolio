@@ -31,7 +31,7 @@ const cockpit = (props) => {
             <br /><br />
             <span>{props.likes} likes</span>
             <br /><br />
-            <span>What's your mood today?</span>
+            <span>What\'s your mood today?</span>
             <br /><br />
             <span style={moodStyle}>I'm {props.mood}</span>
             <Input changed={props.changed} value={props.mood} />
