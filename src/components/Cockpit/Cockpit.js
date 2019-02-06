@@ -4,6 +4,7 @@ import React from 'react';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import Link from '../Link/Link';
+import Tetrahedron from '../Tetrahedron/Tetrahedron';
 
 const cockpit = (props) => {
     const infosStyle = {
@@ -38,6 +39,7 @@ const cockpit = (props) => {
             <br /><br />
             <Button click={props.showed}>Photography</Button>
             {infos}
+            <Tetrahedron />
         </div>
     );
 };
