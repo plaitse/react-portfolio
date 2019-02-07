@@ -8,7 +8,7 @@ export default class ModelRenderer {
     }
 
     registerNewModel = (model, id) => {
-        if (this.models[id]) {
+        if (!this.models[id]) {
             this.models[id] = {
                 type: model,
                 instances: [],
@@ -17,10 +17,7 @@ export default class ModelRenderer {
     }
 
     addInstance = (instance, id) => {
-        console.log('@@@@@@@@@@@@@@ :', instance);
-        console.log('@@@@@@@@@@@@@@ :', this.models[id].instances);
         this.models[id].instances.push(instance);
-        console.log('@@@@@@@@@@@@@@ :', this.models[id].instances);
     }
 
     preRender = () => {
