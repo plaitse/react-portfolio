@@ -25,6 +25,7 @@ export default class ModelShader {
         GLC.linkProgram(program);
 
         this.positionAttribute = GLC.getAttribLocation(program, Locations.POSITION);
+        this.transformationMatrix = GLC.getUniformLocation(program, 'transformationMatrix');
         this.program = program;
     }
 
@@ -35,5 +36,10 @@ export default class ModelShader {
     enablePosition = () => {
         GLC.enableVertexAttribArray(this.positionAttribute);
         GLC.pointToAttribute(this.positionAttribute, 3);
+    }
+
+    enableTransformationMatrix = (matrix) => {
+        console.log(matrix);
+        GLC.uploadMatrix4fv(this.transformationMatrix, matrix);
     }
 }
