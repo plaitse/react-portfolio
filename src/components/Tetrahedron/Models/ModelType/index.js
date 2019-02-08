@@ -13,6 +13,7 @@ export default class ModelType {
         this.vertexBuffer = GLC.createBuffer();
         GLC.bindArrayBuffer(this.vertexBuffer);
         GLC.addArrayBufferData(this.vertices);
+        // GLC.pointToAttribute(0, 3);
         GLC.unbindArrayBuffer();
     }
 

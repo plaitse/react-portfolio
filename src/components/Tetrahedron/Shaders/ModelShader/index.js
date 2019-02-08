@@ -34,6 +34,7 @@ export default class ModelShader {
     }
 
     enablePosition = () => {
+        console.log('this.positionAttr : ', this.positionAttribute);
         GLC.enableVertexAttribArray(this.positionAttribute);
         GLC.pointToAttribute(this.positionAttribute, 3);
     }

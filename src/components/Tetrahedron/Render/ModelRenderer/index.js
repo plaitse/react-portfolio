@@ -32,8 +32,9 @@ export default class ModelRenderer {
             this.models[model].type.use(this.shader);
             this.models[model].instances.forEach(instance => {
                 this.shader.enableTransformationMatrix(instance.getTransformationMatrix());
+                console.log('noOfIndices : ', this.models[model].type.indices.length);
                 GLC.drawTriangles(this.models[model].type.indices.length);
-            }) 
+            })
         })
     }
 }
