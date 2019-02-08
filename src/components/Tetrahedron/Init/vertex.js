@@ -11,9 +11,12 @@ import Locations from './locations';
 
 export default `
     attribute vec3 ${Locations.POSITION};
-    uniform mat4 transformationMatrix;
 
-    void main(void) {
-        gl_Position = transformationMatrix * vec4(${Locations.POSITION}, 1.0);
+    uniform mat4 mWorld;
+    uniform mat4 uModelViewMatrix;
+    uniform mat4 uProjectionMatrix;
+
+    void main() {
+        gl_Position = uProjectionMatrix * uModelViewMatrix * mWorld * vec4(${Locations.POSITION}, 1.0);
     }
 `;
