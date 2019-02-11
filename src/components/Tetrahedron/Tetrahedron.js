@@ -1,20 +1,36 @@
 import React, { Component } from 'react';
-// import * as WebgGl from './gl-matrix';
 
-// import * as Test from './Tetrahedron-webgl';
-import init from './Init';
+import init from './WebGL/init';
 import styles from './Tetrahedron.module.css';
 
 class tetrahedron extends Component {
-    
+    state = {
+        width: window.innerWidth / 3
+    }
+
     componentDidMount() {
         init('tetra');
+        window.addEventListener('resize', this.updateDimensions);
+    }
+
+    componentWillMount() {
+        this.updateDimensions();
+        init('tetra');
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateDimensions);
+    }
+
+    updateDimensions = () => {
+        document.getElementById('tetra').remove();
+        this.setState({width: window.innerWidth / 3});
     }
 
     render() {
         return (
             <div className={styles.wrapper}>
-                <canvas id='tetra' width={500} height={500}></canvas>
+                <canvas id='tetra' width={this.state.width} height={this.state.width}></canvas>
             </div>
         );
     }
