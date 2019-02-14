@@ -7,12 +7,6 @@ export default (id) => {
     const canvas = document.querySelector(`#${id}`);
     if (!canvas) return;
 
-    console.log(canvas.width);
-    console.log(canvas.height);
-
-    console.log(window.innerWidth);
-    console.log(window.innerHeight);
-
     const gl = canvas.getContext('webgl');
     if (!gl) return;
 
@@ -37,14 +31,15 @@ export default (id) => {
     // Loop
     const angle = Math.PI / 400;
     let tetraRotation = 0;
+    let animation;
     const render = () => {
-
-        // console.log(canvas.width);
-        // console.log(canvas.height);
+        window.addEventListener('resize', () => {
+            cancelAnimationFrame(animation);
+        });
 
         drawScene(shaderProgram, positions, tetraRotation);
         tetraRotation += angle;
-        requestAnimationFrame(render);
+        animation = requestAnimationFrame(render);
     }
 
     window.requestAnimationFrame(render);

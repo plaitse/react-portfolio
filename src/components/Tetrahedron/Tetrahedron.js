@@ -5,6 +5,7 @@ import styles from './Tetrahedron.module.css';
 
 class tetrahedron extends Component {
     state = {
+        show: true,
         width: window.innerWidth / 3
     }
 
@@ -15,7 +16,6 @@ class tetrahedron extends Component {
 
     componentWillMount() {
         this.updateDimensions();
-        init('tetra');
     }
 
     componentWillUnmount() {
@@ -23,14 +23,22 @@ class tetrahedron extends Component {
     }
 
     updateDimensions = () => {
-        document.getElementById('tetra').remove();
+        if (document.getElementById('tetra') != null) {
+            this.setState({ show: false });
+            setTimeout(() => { 
+                this.setState({ show: true });
+                init('tetra'); 
+            }, 50);
+        }
         this.setState({width: window.innerWidth / 3});
     }
 
     render() {
         return (
             <div className={styles.wrapper}>
-                <canvas id='tetra' width={this.state.width} height={this.state.width}></canvas>
+                { this.state.show ? (
+                    <canvas id='tetra' width={this.state.width} height={this.state.width}></canvas>
+                ) : null }
             </div>
         );
     }
